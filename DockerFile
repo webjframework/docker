@@ -1,4 +1,0 @@
-FROM tomcat:8.0.20-jre8
-
-COPY /deployments/*.war /usr/local/tomcat/webapps/
-COPY /deployments/*.ini /usr/local/tomcat/webapps/
