@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "WebJ Script Starts " 
+
+cd /
+git clone https://github.com/webjframework/webj.git
+cp /webj/*  /usr/local/tomcat/webapps/
+
+catalina.sh run
