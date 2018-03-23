@@ -1,10 +1,16 @@
 #!/bin/bash
 echo "WebJ Script Starts " 
 
-cd /
-git clone https://github.com/webjframework/webj.git
+mkdir /target
+mkdir /target/tomcat.$PORT
+mkdir /target/tomcat.$PORT/webapps
 
+cp /usr/local/deployments/*.ini /target/tomcat.$PORT/webapps
 
-cp /webj/*  /usr/local/tomcat/webapps/
+#cd /#git clone https://github.com/webjframework/webj.git
 
-catalina.sh run
+wget -c -N https://raw.githubusercontent.com/webjframework/webj/master/WebJ.war  -P /usr/local/deployments/
+
+echo $JAVA_OPTS
+
+java  -Xmx300m -Xss512k -Dfile.encoding=UTF-8  -jar /usr/local/deployments/webapp-runner.jar --port $PORT --expanded-dir-name WEBJ --expand-war /usr/local/deployments/WebJ.war
