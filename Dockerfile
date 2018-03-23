@@ -1,11 +1,9 @@
-FROM tomcat:8.0.30-jre8
+FROM java:openjdk-7-jre 
 
-RUN apt-get update && \ 
- apt-get install -y --no-install-recommends inotify-tools git  
- 
-COPY utils/*.ini /usr/local/tomcat/webapps/
+COPY /utils/ /usr/local/deployments/
 
-COPY utils/startup /usr/local/tomcat
+#RUN apt-get update && \
+#apt-get install -y --no-install-recommends inotify-tools git  
 
-RUN chmod a+x  /usr/local/tomcat/startup
-CMD  /usr/local/tomcat/startup
+RUN chmod a+x /usr/local/deployments/startup
+CMD /usr/local/deployments/startup
